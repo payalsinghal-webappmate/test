@@ -1,0 +1,39 @@
+<style>
+    .popup-content .block.location {
+        width: 100%;
+    }
+    .popup-content {
+        display: none;
+    }
+    .popup-content .messages {
+        display: none;
+    }
+    .popup-content h2 {
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: initial;
+        margin: 15px 0px;
+    }
+    .popup-content.block.location .actions {
+        display: block;
+        margin-top: 10px;
+        width: 100%;
+    }
+</style>
+<div class="block location popup-content" id="location-popup">
+    <label for="locations">Choose a location:</label>
+<?php echo $this->getLayout()
+->createBlock('Magento\Store\Block\Switcher')
+->setTemplate('Magento_Store::switch/stores.phtml')
+->toHtml(); ?>
+</div>
+<script type="text/x-magento-init">
+    {
+        "#location-popup": {
+            "Webappmate_Popup/js/location-popup": {
+                "popupTitle": "<?php /* @escapeNotVerified */ echo __('Choose a location:'); ?>"
+            }
+        }
+    }
+</script>
