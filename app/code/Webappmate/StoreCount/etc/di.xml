@@ -1,0 +1,15 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="webappmate_visitor_data_listing_data_source" xsi:type="string">Webappmate\StoreCount\Model\ResourceModel\StoreData\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Webappmate\StoreCount\Model\ResourceModel\StoreData\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">webappmate_visitor_data</argument>
+            <argument name="resourceModel" xsi:type="string">Webappmate\StoreCount\Model\ResourceModel\StoreData</argument>
+        </arguments>
+    </virtualType>
+</config>

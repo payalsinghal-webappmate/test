@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Webappmate_StoreCount::storecount" title="StoreCount" module="Webappmate_StoreCount" sortOrder="51" resource="Webappmate_StoreCount::storecount"/>
+        <add id="Webappmate_StoreCount::visitor" title="Manage Visitor" module="Webappmate_StoreCount" sortOrder="10" action="webappmate_storecount/visitor" resource="Webappmate_StoreCount::visitor" parent="Webappmate_StoreCount::storecount"/>
+    </menu>
+</config>

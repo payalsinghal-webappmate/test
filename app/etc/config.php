@@ -246,6 +246,7 @@ return [
         'Temando_Shipping' => 1,
         'Vertex_Tax' => 1,
         'Webappmate_Popup' => 1,
+        'Webappmate_StoreCount' => 1,
         'Yotpo_Yotpo' => 1
     ]
 ];
