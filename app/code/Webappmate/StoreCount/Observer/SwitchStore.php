@@ -27,30 +27,32 @@ class SwitchStore implements \Magento\Framework\Event\ObserverInterface
 	    
 	
 			
-        $remote = $this->_objectManager->get('Magento\Framework\HTTP\PhpEnvironment\RemoteAddress');
-        $ip = $remote->getRemoteAddress();
-        $ipdat = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip)); 
-        $userCountry = $ipdat->geoplugin_countryName ; 
-        $userCity = $ipdat->geoplugin_city; 
-        $userTimezone = $ipdat->geoplugin_timezone;
-        $userDatetime = date('Y/m/d H:i:s');
+       // $remote = $this->_objectManager->get('Magento\Framework\HTTP\PhpEnvironment\RemoteAddress');
+       // $ip = $remote->getRemoteAddress();
+       // $ipdat = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip)); 
+        //$userCountry = $ipdat->geoplugin_countryName ; 
+       // $userCity = $ipdat->geoplugin_city; 
+        //$userTimezone = $ipdat->geoplugin_timezone;
+        //$userDatetime = date('Y/m/d H:i:s');
         $storeId = $this->storeManager->getStore()->getId();
-        $sql = "Select * FROM " . $tableName." where user_ip ='".$ip."' and store_id=".$storeId;
+        $storeName =$this->storeManager->getStore()->getName();
+        $sql = "Select * FROM " . $tableName." where store_id=".$storeId;
         $result = $connection->fetchAll($sql);
         $model = $this->_objectManager->create('Webappmate\StoreCount\Model\StoreData');
 	    if(count($result)){
 	        $updateData = $model->load($result[0]['id']);
 	        $updateData->setCount($result[0]['count']+1);
 	        $updateData->save();
-        //$sql = "Update " . $tableName . " Set count = count+1 where user_ip ='".$ip."' and store_id=".$storeId;
-        //   $connection->query($sql);	        
+        $sql = "Update " . $tableName . " Set count = count+1 where store_id=".$storeId;
+        $connection->query($sql);	        
 	    }else{
-	    $model->setUserIp($ip);
-        $model->setUserCountry($userCountry);
-        $model->setUserCity($userCity);
-        $model->setUserTimezone($userTimezone);
-        $model->setUserDatetime($userDatetime);
+	    //$model->setUserIp($ip);
+        //$model->setUserCountry($userCountry);
+        //$model->setUserCity($userCity);
+        //$model->setUserTimezone($userTimezone);
+        //$model->setUserDatetime($userDatetime);
         $model->setStoreId($storeId);
+        $model->setStoreName($storeName);
         $model->setCount(1);
         $model->save();
 	    }

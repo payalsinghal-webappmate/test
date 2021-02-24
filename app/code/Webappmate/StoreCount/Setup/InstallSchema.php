@@ -29,37 +29,11 @@ class InstallSchema implements InstallSchemaInterface
                 'primary' => true],
             'ID'
         )->addColumn(
-            'user_ip',
+            'store_name',
             Table::TYPE_TEXT,
             255,
             [],
-            'UserIp'
-        )->addColumn(
-            'user_country',
-            Table::TYPE_TEXT,
-            255,
-            [],
-            'UserCountry'
-        )->addColumn(
-            'user_city',
-            Table::TYPE_TEXT,
-            255,
-            [],
-            'UserCity'
-        )->addColumn(
-            'user_timezone',
-            Table::TYPE_TEXT,
-            255,
-            [],
-            'UserTimezone'
-        )->addColumn(
-            'user_datetime',
-            Table::TYPE_TIMESTAMP,
-            null,
-            [
-                'nullable' => false,
-                'default' => Table::TIMESTAMP_INIT],
-            'UserDatetime'
+            'StoreName'
         )->addColumn(
             'store_id',
            Table::TYPE_INTEGER,
